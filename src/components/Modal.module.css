@@ -11,12 +11,12 @@
     transform: scale(0);
 }
 
-.modal:active {
+.active {
     transform: scale(1);
 }
 
 .modalContent {
     padding: 20px;
     border-radius: 12px;
-    background: #fff;
+    background: #ffffff;
 }
