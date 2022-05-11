@@ -16,9 +16,8 @@ const WholeTree = () => {
             {sections.map((section) => (
                 <CharacterSection section={section} key={section.sectionId} />
             ))}
-            <AddCard />
+            <AddCard active={modalActive} setActive={setModalActive}/>
             <AddCardModal active={modalActive} setActive={setModalActive}/>
-            <button onClick={() => setModalActive(true)}>ДОБАВИТЬ</button>
         </div>
     );
 };
