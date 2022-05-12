@@ -1,16 +1,16 @@
 import React from 'react';
-import style from './AddCard.module.css';
+import style from './AddCategory.module.css';
 
-const AddCard = ({active, setActive}) => {
+const AddCategory = ({setActive}) => {
 
     return (
         <div className={style.card}>
             <h5 className={style.header}>
                 Новый персонаж в игре?
             </h5>
-            <button onClick={() => setActive(true)}>ДОБАВИТЬ</button>
+            <button onClick={() => setActive(true)}>СОЗДАТЬ КАТЕГОРИЮ</button>
         </div>
     );
 };
 
-export default AddCard;
+export default AddCategory;

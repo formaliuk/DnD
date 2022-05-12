@@ -1,24 +1,39 @@
-import React from 'react';
-import CharacterCard from './CharacterCard';
-import AddCard from "./AddCard";
+import React, {useState} from 'react';
 import style from './CharacterSection.module.css';
+import addIcon from '../assets/images/add.png';
+import editIcon from '../assets/images/edit.png';
+import removeIcon from '../assets/images/remove.png';
 
-const CharacterSection = (props) => {
 
-    const { section } = props;
-    const { name, cards } = section;
+
+const CharacterSection = ({category}) => {
+
+    const [characters, setCharacters] = useState(() => {
+        const initialValue = JSON.parse(localStorage.getItem('characters'));
+
+        if (initialValue) {
+            return initialValue.filter((character) => character.category === category);
+        }
+
+        return [];
+    })
+
+    const onAddCharacter = (newCharacter) => {
+        const updatedCharacters = [...characters, newCharacter]
+        setCharacters(updatedCharacters)
+        localStorage.setItem('characters', "updatedCharacters")
+    }
 
     return (
         <div>
             <h2 className={style.sectionName}>
-                {name}
+                {category.name}
             </h2>
-            <div className={style.cards}>
-                {cards.map((card) => (
-                    <CharacterCard card={card} key={card.charId}/>
-                ))}
-            </div>
+            <img src={addIcon} alt='add button' onClick={onAddCharacter}/>
+            <img src={editIcon} alt='edit button' style={{marginLeft: 30}}/>
+            <img src={removeIcon} alt='remove button' style={{marginLeft: 60}}/>
         </div>
+
     );
 };
 
