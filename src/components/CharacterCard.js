@@ -1,16 +1,18 @@
 import React from 'react';
 import style from './CharacterCard.module.css'
 
-const CharacterCard = (props) => {
+const CharacterCard = ({character, onRemove}) => {
+
 
     return (
         <div className={style.card} >
             <h3 className={style.name}>
-                {props.card.charName}
+                {character.name}
             </h3>
             <p className={style.description}>
-                {props.card.charStory}
+                {character.description}
             </p>
+            <button onClick={() => onRemove(character)}>delete</button>
         </div>
     );
 };

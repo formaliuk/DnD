@@ -23,27 +23,7 @@
     border-radius: 12px;
     background: #fff;
     position: relative;
+    z-index: 1000;
 }
 
-.form {
-    border-radius: 10px;
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-}
 
-.formField {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    box-shadow: 4px 4px 50px 0px rgba(34, 60, 80, 0.23);
-    border-radius: 5px;
-    padding: 15px;
-    font-weight: bold;
-}
-
-span {
-    font-size: 0.5em;
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-}

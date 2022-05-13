@@ -1,11 +1,15 @@
-import React, {useState} from 'react';
-import CharacterSection from './CharacterSection';
+import React, {useCallback, useState} from 'react';
+import Section from './Section';
 import style from './WholeTree.module.css';
 import AddCard from "./AddCategory";
-import AddCategoryModal from "./AddCategoryModal";
+import Modal from "./Modal";
+import AddCategoryForm from "./AddCategoryForm";
+import useModalState from "../hooks/useModalState";
 
-const WholeTree = () => {
-    const [modalActive, setModalActive] = useState(false);
+const Tree = () => {
+
+    const addCategoryModal = useModalState()
+
     const [categories, setCategories] = useState(() => {
         const initialValue = JSON.parse(localStorage.getItem('categories'));
         return initialValue || [];
@@ -17,26 +21,29 @@ const WholeTree = () => {
         localStorage.setItem('categories', JSON.stringify(updatedCategories));
     }
 
-
     return (
         <div className={style.body}>
             <h1 className={style.header}>
                 Приключение в Сайне
             </h1>
             {categories.map((category) => (
-                <CharacterSection category={category} key={category.name} />
+                <Section category={category} key={category.name}/>
             ))}
             <AddCard
-                active={modalActive}
-                setActive={setModalActive}
+                active={addCategoryModal.isOpen}
+                setActive={addCategoryModal.open}
             />
-            <AddCategoryModal
-                isOpen={modalActive}
-                onClose={() => setModalActive(false)}
-                onSave={onAddCategory}
-            />
+            <Modal
+                isOpen={addCategoryModal.isOpen}
+                onClose={addCategoryModal.close}
+            >
+                <AddCategoryForm onSave={onAddCategory} onClose={addCategoryModal.close}/>
+            </Modal>
+
+
+
         </div>
     );
 };
 
-export default WholeTree;
+export default Tree;

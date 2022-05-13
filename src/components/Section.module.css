@@ -1,6 +1,13 @@
 .sectionName {
     margin: 20px;
     display: inline-block;
+}
+
+.sectionContainer {
+    width: 400px;
+    border: 2px solid black;
+    border-radius: 20px;
+    margin-bottom: 30px;
     position: relative;
 }
 
@@ -15,5 +22,7 @@
 img {
     width: 20px;
     position: absolute;
-    margin-top: 21px;
+    right: 20px;
+    bottom: 20px;
+
 }

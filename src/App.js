@@ -1,10 +1,10 @@
 import './App.css';
-import WholeTree from "./components/WholeTree";
+import Tree from "./components/Tree";
 
 function App() {
   return (
       <div>
-        <WholeTree />
+        <Tree />
       </div>
   );
 }
